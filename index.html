@@ -3,62 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Warfare Guns</title>
+    <title>MWW - Modern Warfare Weapons</title>
     <link rel="stylesheet" href="style.css">
 </head>
-    <div id="particles-js"></div>
 <body>
-    <div class="container">
+    <div id="particles-js"></div>
+    <header>
         <h1>Modern Warfare Weapons</h1>
-        <div class="cards">
-            <div class="card" onclick="openGunPage('ak47.html')">
-                <h2>AK-47</h2>
-                <p>Legendary assault rifle with high damage.</p>
-                <button>View</button>
-            </div>
-            <div class="card" onclick="openGunPage('uzi.html')">
-                <h2>Uzi</h2>
-                <p>Compact SMG with rapid-fire capability.</p>
-                <button>View</button>
-            </div>
-            <div class="card" onclick="openGunPage('beryl.html')">
-                <h2>Beryl M762</h2>
-                <p>Powerful rifle with strong recoil.</p>
-                <button>View</button>
-            </div>
-        </div>
+    </header>
+    
+    <div class="card-container">
+        <a href="ak47.html" class="card">AK-47</a>
+        <a href="uzi.html" class="card">Uzi</a>
+        <a href="beryl.html" class="card">Beryl</a>
     </div>
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script>
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 40, "density": { "enable": true, "value_area": 600 } },
-      "color": { "value": "#FFD700" }, /* Bright yellow fireflies */
-      "shape": { "type": "circle" },
-      "opacity": {
-        "value": 0.9,
-        "random": true,
-        "anim": { "enable": true, "speed": 0.8, "opacity_min": 0.2 }
-      },
-      "size": {
-        "value": 3,
-        "random": true,
-        "anim": { "enable": true, "speed": 1.5, "size_min": 0.5 }
-      },
-      "move": {
-        "enable": true,
-        "speed": 1.2,
-        "direction": "none",
-        "random": true,
-        "straight": false,
-        "out_mode": "out"
-      }
-    },
-    "interactivity": {
-      "events": { "onhover": { "enable": true, "mode": "repulse" } }
-    }
-  });
-</script>
+
+    <script src="particles.js"></script>
 </body>
 </html>
