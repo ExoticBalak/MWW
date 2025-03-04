@@ -3,41 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Cool Dark Site</title>
+    <title>Dark Themed Animated Website</title>
     <style>
-        /* Gradient Background with Animated Glow */
+        /* Dark Gradient Background */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #050505, #121212, #1c1c1c);
+            background: linear-gradient(135deg, #0a0a0a, #121212, #1c1c1c);
             color: white;
             text-align: center;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
-        /* Dynamic Background Animation */
-        @keyframes bgGlow {
-            0% { background-position: 0 0; }
-            50% { background-position: 100% 100%; }
-            100% { background-position: 0 0; }
+        /* Firefly Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
-        /* Title */
+        /* Title Styling */
         h1 {
             font-size: 4vw;
             margin-top: 40px;
             background: linear-gradient(45deg, #ff4081, #ff9100, #00e676);
             -webkit-background-clip: text;
             color: transparent;
-            animation: glowText 2s infinite alternate;
-        }
-
-        /* Random Glow Text */
-        @keyframes glowText {
-            from { text-shadow: 0 0 10px rgba(255, 0, 150, 0.7); }
-            to { text-shadow: 0 0 20px rgba(0, 255, 200, 0.7); }
+            text-shadow: 0 0 10px rgba(255, 0, 150, 0.7);
         }
 
         /* Container */
@@ -51,14 +48,14 @@
             gap: 20px;
         }
 
-        /* Randomly Animated Cards */
+        /* Flyout Cards */
         .card {
             position: relative;
             width: 300px;
             height: 200px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
             transition: transform 0.4s, box-shadow 0.3s;
             overflow: hidden;
             display: flex;
@@ -68,14 +65,12 @@
             cursor: pointer;
         }
 
-        /* Randomized Hover Glow */
+        /* Hover Effects */
         .card:hover {
             transform: scale(1.1) rotate(-2deg);
-            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7), 
-                        0 0 15px 5px rgba(0, 255, 200, 0.5);
+            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7);
         }
 
-        /* Flyout Hover Effect */
         .card::before {
             content: "";
             position: absolute;
@@ -92,7 +87,7 @@
             left: 0;
         }
 
-        /* Cool Button */
+        /* Glowing Button */
         .cool-button {
             display: inline-block;
             padding: 15px 30px;
@@ -106,13 +101,12 @@
             transition: 0.3s;
         }
 
-        /* Button Hover Animation */
         .cool-button:hover {
             background: linear-gradient(270deg, #ff4081, #ff9100, #00e676);
             transform: scale(1.1);
         }
 
-        /* Spacer to Make Page Longer */
+        /* Make the Page Longer */
         .spacer {
             height: 500px;
         }
@@ -126,19 +120,92 @@
 </head>
 <body>
 
-    <h1>Random Dark Themed Website</h1>
+    <!-- Firefly Particles Canvas -->
+    <canvas class="particles"></canvas>
+
+    <h1>Dark Themed Website with Firefly Particles</h1>
 
     <div class="container">
-        <div class="card">Flyout 1</div>
-        <div class="card">Flyout 2</div>
-        <div class="card">Flyout 3</div>
-        <div class="card">Flyout 4</div>
-        <div class="card">Flyout 5</div>
+        <div class="card">Card 1</div>
+        <div class="card">Card 2</div>
+        <div class="card">Card 3</div>
+        <div class="card">Card 4</div>
+        <div class="card">Card 5</div>
     </div>
 
     <button class="cool-button">Click Me</button>
 
     <div class="spacer"></div>
+
+    <script>
+        /* Particle Effect */
+        const canvas = document.querySelector(".particles");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+
+        class Particle {
+            constructor(x, y, size, speedX, speedY) {
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.speedX = speedX;
+                this.speedY = speedY;
+                this.alpha = Math.random() * 0.8 + 0.2;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 0, ${this.alpha})`;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = "yellow";
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            for (let i = 0; i < 50; i++) {
+                let size = Math.random() * 3 + 2;
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let speedX = (Math.random() - 0.5) * 1.5;
+                let speedY = (Math.random() - 0.5) * 1.5;
+                particlesArray.push(new Particle(x, y, size, speedX, speedY));
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let particle of particlesArray) {
+                particle.update();
+                particle.draw();
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        initParticles();
+        animateParticles();
+
+        /* Resize Canvas on Window Resize */
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
+        });
+    </script>
 
 </body>
 </html>
