@@ -3,28 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Warfare Themed Website</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Dark Themed Website with Fireflies</title>
+    <style>
+        /* Dark Gradient Background */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #121212, #1c1c1c);
+            color: white;
+            text-align: center;
+            min-height: 200vh; /* Make page scrollable */
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    <!-- Particle Effect -->
-    <canvas class="particles"></canvas>
+        /* Firefly Particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none; /* Allows interaction with the page */
+            z-index: -1;
+        }
 
-    <h1>Modern Warfare Weapons</h1>
+        /* Title Styling */
+        h1 {
+            font-size: 4vw;
+            margin-top: 40px;
+            background: linear-gradient(45deg, #ff4081, #ff9100, #00e676);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 0, 150, 0.7);
+        }
 
-    <div class="container">
-        <div class="card">AK-47</div>
-        <div class="card">M4A1</div>
-        <div class="card">Uzi</div>
-        <div class="card">Desert Eagle</div>
-        <div class="card">Beryl</div>
-    </div>
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 50px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-    <button class="glow-button">Explore More</button>
+        /* Flyout Cards */
+        .card {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            transition: transform 0.4s, box-shadow 0.3s;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
 
-    <div class="spacer"></div>
+        /* Hover Effects */
+        .card:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7);
+        }
 
-    <script src="script.js"></script>
-</body>
-</html>
+        .card::before {
+            content: "";
+            position: absolute;
+            width: 150%;
+            height: 150%;
