@@ -3,41 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Themed Animated Website</title>
+    <title>Modern Warfare Themed Website</title>
     <style>
-        /* Dark Gradient Background */
+        /* Dark Themed Background */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #121212, #1c1c1c);
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at center, #0d0d0d, #101010, #1a1a1a);
             color: white;
             text-align: center;
-            overflow: hidden;
+            min-height: 200vh; /* Ensure scrolling */
+            overflow-x: hidden;
             position: relative;
         }
 
-        /* Firefly Particles */
+        /* Particle Background */
         .particles {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
+            z-index: -1;
         }
 
-        /* Title Styling */
+        /* Header */
         h1 {
             font-size: 4vw;
             margin-top: 40px;
-            background: linear-gradient(45deg, #ff4081, #ff9100, #00e676);
-            -webkit-background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 10px rgba(255, 0, 150, 0.7);
+            color: #ffcc00;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.8);
         }
 
-        /* Container */
+        /* Content Container */
         .container {
             width: 90%;
             max-width: 1200px;
@@ -51,94 +51,97 @@
         /* Flyout Cards */
         .card {
             position: relative;
-            width: 300px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            width: 320px;
+            height: 220px;
+            background: rgba(255, 204, 0, 0.08);
+            border-radius: 12px;
             backdrop-filter: blur(5px);
-            transition: transform 0.4s, box-shadow 0.3s;
-            overflow: hidden;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
+            font-weight: bold;
             cursor: pointer;
+            overflow: hidden;
         }
 
-        /* Hover Effects */
+        /* Hover Effect */
         .card:hover {
-            transform: scale(1.1) rotate(-2deg);
-            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7);
+            transform: scale(1.08);
+            box-shadow: 0 0 20px 3px rgba(255, 204, 0, 0.6);
+            border-color: rgba(255, 204, 0, 0.8);
         }
 
         .card::before {
             content: "";
             position: absolute;
-            width: 150%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(255, 0, 150, 0.5), transparent);
-            top: -100%;
-            left: -100%;
-            transition: all 0.4s ease-out;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 204, 0, 0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
         .card:hover::before {
-            top: 0;
-            left: 0;
+            opacity: 1;
         }
 
         /* Glowing Button */
-        .cool-button {
+        .glow-button {
             display: inline-block;
             padding: 15px 30px;
             margin-top: 50px;
             font-size: 1.5rem;
+            font-weight: bold;
             color: white;
-            background: linear-gradient(90deg, #ff4081, #ff9100, #00e676);
+            background: linear-gradient(90deg, #ffcc00, #ff6600);
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
         }
 
-        .cool-button:hover {
-            background: linear-gradient(270deg, #ff4081, #ff9100, #00e676);
+        .glow-button:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.9);
         }
 
-        /* Make the Page Longer */
+        /* Long Scrolling */
         .spacer {
             height: 500px;
         }
 
         /* Responsive */
         @media (max-width: 600px) {
-            .card { width: 90%; height: 180px; font-size: 1.2rem; }
-            .cool-button { font-size: 1.2rem; }
+            .card { width: 90%; height: 200px; font-size: 1.4rem; }
+            .glow-button { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Firefly Particles Canvas -->
+    <!-- Firefly Particle Canvas -->
     <canvas class="particles"></canvas>
 
-    <h1>Dark Themed Website with Firefly Particles</h1>
+    <h1>Modern Warfare Weapons</h1>
 
     <div class="container">
-        <div class="card">Card 1</div>
-        <div class="card">Card 2</div>
-        <div class="card">Card 3</div>
-        <div class="card">Card 4</div>
-        <div class="card">Card 5</div>
+        <div class="card">AK-47</div>
+        <div class="card">M4A1</div>
+        <div class="card">Uzi</div>
+        <div class="card">Desert Eagle</div>
+        <div class="card">Beryl</div>
     </div>
 
-    <button class="cool-button">Click Me</button>
+    <button class="glow-button">Explore More</button>
 
     <div class="spacer"></div>
 
     <script>
-        /* Particle Effect */
+        /* Firefly Particle Effect */
         const canvas = document.querySelector(".particles");
         const ctx = canvas.getContext("2d");
 
@@ -168,7 +171,7 @@
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 0, ${this.alpha})`;
+                ctx.fillStyle = `rgba(255, 204, 0, ${this.alpha})`;
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = "yellow";
                 ctx.fill();
@@ -177,12 +180,12 @@
 
         function initParticles() {
             particlesArray = [];
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 let size = Math.random() * 3 + 2;
                 let x = Math.random() * canvas.width;
                 let y = Math.random() * canvas.height;
-                let speedX = (Math.random() - 0.5) * 1.5;
-                let speedY = (Math.random() - 0.5) * 1.5;
+                let speedX = (Math.random() - 0.5) * 1.2;
+                let speedY = (Math.random() - 0.5) * 1.2;
                 particlesArray.push(new Particle(x, y, size, speedX, speedY));
             }
         }
@@ -199,7 +202,7 @@
         initParticles();
         animateParticles();
 
-        /* Resize Canvas on Window Resize */
+        /* Resize on Window Change */
         window.addEventListener("resize", () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
