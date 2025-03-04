@@ -3,26 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cool Animated Dark Website</title>
+    <title>Random Cool Dark Site</title>
     <style>
-        /* Background Gradient */
+        /* Gradient Background with Animated Glow */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a, #1c1c1c, #262626);
+            background: linear-gradient(135deg, #050505, #121212, #1c1c1c);
             color: white;
             text-align: center;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Header */
+        /* Dynamic Background Animation */
+        @keyframes bgGlow {
+            0% { background-position: 0 0; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0 0; }
+        }
+
+        /* Title */
         h1 {
             font-size: 4vw;
             margin-top: 40px;
-            background: linear-gradient(45deg, #ff4081, #ff9100);
+            background: linear-gradient(45deg, #ff4081, #ff9100, #00e676);
             -webkit-background-clip: text;
             color: transparent;
+            animation: glowText 2s infinite alternate;
+        }
+
+        /* Random Glow Text */
+        @keyframes glowText {
+            from { text-shadow: 0 0 10px rgba(255, 0, 150, 0.7); }
+            to { text-shadow: 0 0 20px rgba(0, 255, 200, 0.7); }
         }
 
         /* Container */
@@ -36,14 +51,14 @@
             gap: 20px;
         }
 
-        /* Flyout Cards */
+        /* Randomly Animated Cards */
         .card {
             position: relative;
             width: 300px;
             height: 200px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             transition: transform 0.4s, box-shadow 0.3s;
             overflow: hidden;
             display: flex;
@@ -53,13 +68,14 @@
             cursor: pointer;
         }
 
-        /* Flyout Effect */
+        /* Randomized Hover Glow */
         .card:hover {
             transform: scale(1.1) rotate(-2deg);
-            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7);
+            box-shadow: 0 0 20px 5px rgba(255, 0, 150, 0.7), 
+                        0 0 15px 5px rgba(0, 255, 200, 0.5);
         }
 
-        /* Animated Flyout */
+        /* Flyout Hover Effect */
         .card::before {
             content: "";
             position: absolute;
@@ -76,32 +92,51 @@
             left: 0;
         }
 
-        /* Make it Longer */
+        /* Cool Button */
+        .cool-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin-top: 50px;
+            font-size: 1.5rem;
+            color: white;
+            background: linear-gradient(90deg, #ff4081, #ff9100, #00e676);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Button Hover Animation */
+        .cool-button:hover {
+            background: linear-gradient(270deg, #ff4081, #ff9100, #00e676);
+            transform: scale(1.1);
+        }
+
+        /* Spacer to Make Page Longer */
         .spacer {
-            height: 400px;
+            height: 500px;
         }
 
         /* Responsive */
         @media (max-width: 600px) {
-            .card {
-                width: 90%;
-                height: 180px;
-                font-size: 1.2rem;
-            }
+            .card { width: 90%; height: 180px; font-size: 1.2rem; }
+            .cool-button { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <h1>Dark Gradient Animated Cards</h1>
+    <h1>Random Dark Themed Website</h1>
 
     <div class="container">
-        <div class="card">Card 1</div>
-        <div class="card">Card 2</div>
-        <div class="card">Card 3</div>
-        <div class="card">Card 4</div>
-        <div class="card">Card 5</div>
+        <div class="card">Flyout 1</div>
+        <div class="card">Flyout 2</div>
+        <div class="card">Flyout 3</div>
+        <div class="card">Flyout 4</div>
+        <div class="card">Flyout 5</div>
     </div>
+
+    <button class="cool-button">Click Me</button>
 
     <div class="spacer"></div>
 
